@@ -2,6 +2,8 @@ package com.lc.vuedemospringboot.controller;
 
 import com.lc.vuedemospringboot.pojo.User;
 import com.lc.vuedemospringboot.result.Result;
+import com.lc.vuedemospringboot.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,14 +13,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class LoginController {
 
+    @Autowired
+    UserService userService;
+
     @CrossOrigin
     @RequestMapping("api/login")
     @ResponseBody
     public Result login(@RequestBody User user){
 
-        System.out.println(user.getUsername()+"::"+user.getPassword());
+        User byUsernameAndPassword = userService.getByUsernameAndPassword(user.getUsername(), user.getPassword());
 
-        if ("admin".equals(user.getUsername()) && "123".equals(user.getPassword())){
+        if (byUsernameAndPassword!=null){
             return new Result(200);
         }else {
             return new Result(400);
