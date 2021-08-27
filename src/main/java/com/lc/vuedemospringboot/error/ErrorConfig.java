@@ -11,10 +11,8 @@ public class ErrorConfig implements ErrorPageRegistrar {
     @Override
     public void registerErrorPages(ErrorPageRegistry registry) {
 
-        ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, "/error404.html");
-        ErrorPage errorPag500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error500.html");
-
-        registry.addErrorPages(errorPage404,errorPag500);
+        ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/index.html");
+        registry.addErrorPages(error404Page);
 
     }
 }
