@@ -39,4 +39,9 @@ public class BookService {
         List<Book> allByCategory = bookDAO.findAllByCategory(category);
         return allByCategory;
     }
+
+    public List<Book> findAllByTitleLikeOrAuthorLike(String title,String author){
+      return   bookDAO.findAllByTitleLikeOrAuthorLike(title,author);
+    }
+
 }

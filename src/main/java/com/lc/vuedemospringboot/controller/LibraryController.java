@@ -41,4 +41,13 @@ public class LibraryController {
         }
     }
 
+    @CrossOrigin
+    @GetMapping("/api/search")
+    public List<Book> findAllByTitleLikeOrAuthorLike(@RequestParam("keywords") String keywords){
+        if ("".equals(keywords)){
+            return bookService.list();
+        }else {
+          return   bookService.findAllByTitleLikeOrAuthorLike('%'+keywords+'%','%'+keywords+'%');
+        }
+    }
 }
