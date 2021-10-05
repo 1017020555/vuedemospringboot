@@ -4,6 +4,7 @@ import com.lc.vuedemospringboot.interceptor.LoginInterceptor;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootConfiguration
@@ -19,4 +20,8 @@ public class MyWebConfigurer implements WebMvcConfigurer {
         registry.addInterceptor(getLoginIntercepter()).addPathPatterns("/**").excludePathPatterns("/index.html");
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/api/file/**").addResourceLocations("file:" + "D:/workspace/vuedemospringboot/img/");
+    }
 }

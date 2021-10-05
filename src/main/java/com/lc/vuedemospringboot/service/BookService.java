@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -31,7 +33,16 @@ public class BookService {
     }
 
     public void deleteById(int id){
+
+        Book book = bookDAO.findById(id);
+        String substring = "D:/workspace/vuedemospringboot/img/"+book.getCover().substring(31);
+        File file=new File(substring);
+        if (file.exists()){
+            file.delete();
+        }
+
         bookDAO.deleteById(id);
+
     }
 
     public List<Book> listByCategory(int cid){

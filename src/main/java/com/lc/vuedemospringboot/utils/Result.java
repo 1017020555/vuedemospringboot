@@ -1,4 +1,4 @@
-package com.lc.vuedemospringboot.result;
+package com.lc.vuedemospringboot.utils;
 
 public class Result {
     private int code;

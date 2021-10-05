@@ -1,7 +1,7 @@
 package com.lc.vuedemospringboot.controller;
 
 import com.lc.vuedemospringboot.pojo.User;
-import com.lc.vuedemospringboot.result.Result;
+import com.lc.vuedemospringboot.utils.Result;
 import com.lc.vuedemospringboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
